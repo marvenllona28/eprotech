@@ -25,7 +25,17 @@
     <div class="container nav-wrapper">
 
       <div class="logo">
-        E-protech IT Solutions
+
+        <img
+          src="logo.png"
+          alt="E-protech Logo"
+          class="logo-img"
+        >
+
+        <span>
+          E-protech IT Solutions
+        </span>
+
       </div>
 
       <div class="menu-toggle" id="menu-toggle">
@@ -84,7 +94,7 @@
         <p>
           Professional ISP services,
           MikroTik configuration,
-          fiber installation,
+          aerial fiber installation,
           wireless PtP/PtMP systems,
           CCTV installation,
           structured cabling,
@@ -247,7 +257,12 @@
         <h2>Internet Plans</h2>
 
         <p>
-          Affordable and reliable internet packages
+          We provide internet for schools,
+          residential homes,
+          resorts,
+          businesses,
+          and custom enterprise setups.
+          Tell us what you need.
         </p>
 
       </div>
@@ -342,6 +357,93 @@
 
       </div>
 
+      <div class="card reveal">
+
+        <h3>🗺️ Coverage Map</h3>
+
+        <iframe
+          src="https://www.google.com/maps/embed?pb="
+          width="100%"
+          height="400"
+          style="border:0; border-radius:15px;"
+          allowfullscreen=""
+          loading="lazy"
+        ></iframe>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SPEEDTEST -->
+
+  <section class="page" id="speedtest">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>Internet Speed Test</h2>
+
+        <p>
+          Test your internet connection speed
+        </p>
+
+      </div>
+
+      <div class="card reveal">
+
+        <iframe
+          src="https://fast.com"
+          width="100%"
+          height="600"
+          style="border:none; border-radius:15px;"
+        ></iframe>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+
+  <section class="page" id="about">
+
+    <div class="container">
+
+      <div class="section-title">
+
+        <h2>About E-protech IT Solutions</h2>
+
+      </div>
+
+      <div class="card reveal">
+
+        <p>
+          E-protech IT Solutions is a startup mini-ISP
+          focused on delivering affordable and reliable
+          internet and IT solutions in local communities.
+        </p>
+
+        <br>
+
+        <p>
+          We specialize in wireless networking,
+          MikroTik systems,
+          fiber optic infrastructure,
+          CCTV deployment,
+          WiFi systems,
+          and custom internet solutions
+          for homes,
+          schools,
+          resorts,
+          and businesses.
+        </p>
+
+      </div>
+
     </div>
 
   </section>
@@ -412,11 +514,15 @@
 
         <form
           class="contact-form reveal"
-          action="https://formsubmit.co/v3nb0i@gmail.com"
+          action="https://api.web3forms.com/submit"
           method="POST"
         >
 
-          <!-- INPUT ROW -->
+          <input
+            type="hidden"
+            name="access_key"
+            value="YOUR_ACCESS_KEY_HERE"
+          />
 
           <div class="form-row">
 
@@ -442,35 +548,23 @@
 
           </div>
 
-          <!-- MESSAGE -->
-
           <textarea
             name="message"
             placeholder="Tell us what service you need..."
             required
           ></textarea>
 
-          <!-- HIDDEN -->
-
           <input
             type="hidden"
-            name="_captcha"
-            value="false"
-          >
-
-          <input
-            type="hidden"
-            name="_subject"
+            name="subject"
             value="New Customer Inquiry - EITS"
-          >
+          />
 
           <input
             type="hidden"
-            name="_next"
+            name="redirect"
             value="https://eits.it.com"
-          >
-
-          <!-- BUTTON -->
+          />
 
           <button
             type="submit"
