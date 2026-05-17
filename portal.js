@@ -26,7 +26,7 @@ const firebaseConfig = {
   measurementId: "G-L85488H8H5"
 };
 
-/* INIT */
+/* INITIALIZE */
 
 const app = initializeApp(firebaseConfig);
 
@@ -46,9 +46,11 @@ const userEmail = document.getElementById("userEmail");
 
 window.register = async function () {
 
-  const email = document.getElementById("email").value;
+  const email =
+    document.getElementById("email").value;
 
-  const password = document.getElementById("password").value;
+  const password =
+    document.getElementById("password").value;
 
   try {
 
@@ -60,9 +62,35 @@ window.register = async function () {
 
     alert("Registration successful!");
 
-  } catch (error) {
+  }
 
-    alert(error.message);
+  catch (error) {
+
+    if (error.code === "auth/invalid-email") {
+
+      alert("Please enter a valid email.");
+
+    }
+
+    else if (error.code === "auth/weak-password") {
+
+      alert("Password must be at least 6 characters.");
+
+    }
+
+    else if (
+      error.code === "auth/email-already-in-use"
+    ) {
+
+      alert("Email already registered.");
+
+    }
+
+    else {
+
+      alert(error.message);
+
+    }
 
   }
 
@@ -72,9 +100,11 @@ window.register = async function () {
 
 window.login = async function () {
 
-  const email = document.getElementById("email").value;
+  const email =
+    document.getElementById("email").value;
 
-  const password = document.getElementById("password").value;
+  const password =
+    document.getElementById("password").value;
 
   try {
 
@@ -84,9 +114,29 @@ window.login = async function () {
       password
     );
 
-  } catch (error) {
+  }
 
-    alert(error.message);
+  catch (error) {
+
+    if (error.code === "auth/invalid-email") {
+
+      alert("Please enter a valid email.");
+
+    }
+
+    else if (
+      error.code === "auth/invalid-credential"
+    ) {
+
+      alert("Incorrect email or password.");
+
+    }
+
+    else {
+
+      alert(error.message);
+
+    }
 
   }
 
@@ -112,7 +162,48 @@ onAuthStateChanged(auth, (user) => {
 
     userEmail.innerText = user.email;
 
-  } else {
+    /* ADMIN CHECK */
+
+    const adminEmails = [
+      "support@eits.it.com",
+      "v3nb0i@gmail.com"
+    ];
+
+    if (adminEmails.includes(user.email)) {
+
+      const existingAdmin =
+        document.getElementById("adminPanel");
+
+      if (!existingAdmin) {
+
+        const adminBox =
+          document.createElement("div");
+
+        adminBox.id = "adminPanel";
+
+        adminBox.innerHTML = `
+
+          <div class="dashboard-card">
+
+            <h3>ADMIN PANEL</h3>
+
+            <p>
+              You are logged in as administrator.
+            </p>
+
+          </div>
+
+        `;
+
+        dashboard.prepend(adminBox);
+
+      }
+
+    }
+
+  }
+
+  else {
 
     loginBox.classList.remove("hidden");
 
@@ -133,7 +224,7 @@ window.submitTicket = async function () {
 
   if (!message) {
 
-    alert("Please enter a message.");
+    alert("Please enter your concern.");
 
     return;
 
@@ -152,9 +243,13 @@ window.submitTicket = async function () {
 
     alert("Support ticket submitted!");
 
-    document.getElementById("ticketMessage").value = "";
+    document.getElementById(
+      "ticketMessage"
+    ).value = "";
 
-  } catch (error) {
+  }
+
+  catch (error) {
 
     alert(error.message);
 
